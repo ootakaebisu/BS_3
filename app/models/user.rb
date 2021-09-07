@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :book_statuses, dependent: :destroy
   has_many :favorite_books, dependent: :destroy
   has_many :reviews, dependent: :destroy
-
+  has_many :responses, dependent: :destroy
+  has_many :good_reviews, dependent: :destroy
 
 end

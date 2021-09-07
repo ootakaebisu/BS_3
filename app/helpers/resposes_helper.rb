@@ -1,0 +1,2 @@
+module ResposesHelper
+end

@@ -9,5 +9,7 @@ class BooksController < ApplicationController
     @review = current_user.reviews.find_by(book_id: @book)
     # 「自分以外全員」のレビューの取得
     @reviews = @book.reviews.where.not(user_id: current_user.id)
+    @responses = @book.responses
+    
   end
 end

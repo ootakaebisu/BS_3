@@ -1,6 +1,6 @@
 class FavoriteAuthorsController < ApplicationController
   def index
-    @user = User.find_by(params[:user_id])
+    @user = User.find(params[:user_id])
     @favorite_authors = @user.favorite_authors
   end
 

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :books, only:[:show, :index] do
     resources :book_statuses, only:[:create, :update, :destroy]
-    resources :reviews, only:[:create, :update, :destroy]
+    resources :reviews, only:[:create, :update, :destroy] do
+      resource :good_reviews, only:[:create, :destroy]
+    end
+    resources :responses, only:[:create, :destroy]
     resource :favorite_book, only:[:create, :destroy]
   end
 
