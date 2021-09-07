@@ -1,0 +1,17 @@
+<h1>マイページ</h1>
+
+<div>
+  <%= link_to "好きな作者一覧", user_favorite_authors_path(@user) %>
+</div>
+
+<div>
+  <%= link_to @user.name+"さんの気になる本", user_book_statuses_path(@user, key: "check_book") %>
+</div>
+
+<div>
+  <%= link_to @user.name+"さんの読んでいる本", user_book_statuses_path(@user, key: "read_book") %>
+</div>
+
+<div>
+  <%= link_to @user.name+"さんの読み終わった本", user_book_statuses_path(@user, key: "finish_book") %>
+</div>

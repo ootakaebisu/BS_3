@@ -1,0 +1,8 @@
+<h1><%= @user.name %>さんの<%= @title %>本 </h1>
+
+<% @book_statuses.each do |book_status| %>
+  <div>
+    タイトル：<%= link_to book_status.book.title, book_path(book_status.book.id) %>
+    　著者：<%= link_to book_status.book.author.name, author_path(book_status.book.author.id) %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<h1><%= @author.name %>'sページ</h1>
+
+<div>
+  <% if @author.favorite_author_by?(current_user) %>
+    お気に入り登録済みです
+    <%= link_to "登録を外す", author_favorite_authors_path(@author.id), method: :delete %><br>
+    <%= @author.favorite_authors.count %>人がこの著者をお気に入りに登録しています
+  <% else %>
+    この著者をお気に入りに登録しますか？
+    <%= link_to "登録する", author_favorite_authors_path(@author.id), method: :post %><br>
+    <%= @author.favorite_authors.count %>人がこの著者をお気に入りに登録しています
+  <% end %>
+</div>
+
+<h3>著書一覧</h3>
+<% @author.books.each do |book| %>
+  <div>
+    <%= link_to book.title, book_path(book.id) %>
+  </div>
+<% end %>
+
+
+

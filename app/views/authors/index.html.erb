@@ -1,0 +1,9 @@
+<h1>著者一覧</h1>
+
+<% @authors.each do |author| %>
+  <div>
+    <%= link_to author.name, author_path(author.id) %>
+  </div>
+<% end %>
+
+

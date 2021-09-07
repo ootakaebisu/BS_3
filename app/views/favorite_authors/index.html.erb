@@ -1,0 +1,8 @@
+<h1><%= @user.name %>さんのお気に入り著者一覧</h1>
+
+<% @favorite_authors.each do |favorite_author| %>
+  <div>
+    <%= link_to favorite_author.author.name, author_path(favorite_author.author.id) %>
+    <%= link_to "お気に入りから削除する", author_favorite_authors_path(favorite_author.author.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<h1><%= @book.title %>'sページ</h1>
+
+<!--本のステータス判定-->
+<div>
+  <% if @book_status != nil %>
+    <% if @book_status.status == "check" %>
+      この本のステータス：気になる本 ( 最終更新日：<%= @book_status.updated_at.strftime("%Y/%m/%d") %> )<br>
+      <b><%= link_to "気になる", book_book_status_path(book_id: @book.id, id: @book_status), method: :delete %></b>
+      <%= link_to "読んでいる", book_book_status_path(book_id: @book.id, id: @book_status.id, key: "read"), method: :patch %>
+      <%= link_to "読み終わった", book_book_status_path(book_id: @book.id, id: @book_status.id, key: "finish"), method: :patch %>
+    <% elsif @book_status.status == "read" %>
+      この本のステータス：読んでいる本 ( 最終更新日：<%= @book_status.updated_at.strftime("%Y/%m/%d") %> )<br>
+      <%= link_to "気になる", book_book_status_path(book_id: @book.id, id: @book_status.id, key: "check"), method: :patch %>
+      <b><%= link_to "読んでいる", book_book_status_path(book_id: @book.id, id: @book_status), method: :delete %></b>
+      <%= link_to "読み終わった", book_book_status_path(book_id: @book.id, id: @book_status.id, key: "finish"), method: :patch %>
+    <% elsif @book_status.status == "finish" %>
+      この本のステータス：読み終わった本 ( 最終更新日：<%= @book_status.updated_at.strftime("%Y/%m/%d") %> )<br>
+      <%= link_to "気になる", book_book_status_path(book_id: @book.id, id: @book_status.id, key: "check"), method: :patch %>
+      <%= link_to "読んでいる", book_book_status_path(book_id: @book.id, id: @book_status.id, key: "read"), method: :patch %>
+      <b><%= link_to "読み終わった", book_book_status_path(book_id: @book.id, id: @book_status), method: :delete %></b>
+    <% end %>
+  <% else %>
+    この本のステータス：ー<br>
+    <%= link_to "気になる", book_book_statuses_path(@book.id, key: "check"), method: :post %>
+    <%= link_to "読んでいる", book_book_statuses_path(@book.id, key: "read"), method: :post %>
+    <%= link_to "読み終わった", book_book_statuses_path(@book.id, key: "finish"), method: :post %>
+  <% end %>
+</div>
