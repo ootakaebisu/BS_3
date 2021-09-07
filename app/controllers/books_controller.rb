@@ -6,5 +6,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @book_status = current_user.book_statuses.find_by(book_id: @book.id)
+    @review = current_user.reviews.find_by(book_id: @book)
+    # 「自分以外全員」のレビューの取得
+    @reviews = @book.reviews.where.not(user_id: current_user.id)
   end
 end

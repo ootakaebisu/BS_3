@@ -10,8 +10,10 @@ class BookStatusesController < ApplicationController
     elsif params[:key] == "finish_book"
       @book_statuses = @user.book_statuses.where(status: "finish")
       @title = "読み終わった"
+    elsif params[:key] == "favorite_book"
+      @book_statuses = @user.favorite_books
+      @title = "お気に入りの"
     end
-
   end
 
   def create

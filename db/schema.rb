@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_231111) do
+ActiveRecord::Schema.define(version: 2021_09_07_035442) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_231111) do
   create_table "book_statuses", force: :cascade do |t|
     t.integer "book_id"
     t.integer "user_id"
-    t.integer "status", null:false
+    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 2021_09_06_231111) do
   create_table "favorite_authors", force: :cascade do |t|
     t.integer "author_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_books", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "user_id"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

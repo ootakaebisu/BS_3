@@ -15,3 +15,7 @@
 <div>
   <%= link_to @user.name+"さんの読み終わった本", user_book_statuses_path(@user, key: "finish_book") %>
 </div>
+
+<div>
+  <%= link_to @user.name+"さんのお気に入りの本", user_book_statuses_path(@user, key: "favorite_book") %>
+</div>
